@@ -21,6 +21,8 @@ class Assignment5{
         final String SUCCESS_MSG = String.format("\t%s%s%s\n", COLOR_GREEN_BOLD, "%s", RESET);
 
         String[] accountId= new String[0];
+        String[] custNames = new String[0];
+
         String screen = DASHBOARD;
 
         do{
@@ -68,11 +70,52 @@ class Assignment5{
 
                     // Name Validation
 
-                    String name;
+                    String name;                 
+                    loop:
+                    do{
+                        System.out.println("Enter Customer Name");
+                        name = SCANNER.nextLine().strip();
+
+                        if(name.isBlank()){
+                            System.out.printf(ERROR_MSG,"Name Cant be Empty");
+                            continue;
+                        } 
+                        for (int i = 0; i < name.length(); i++) {
+                            if (!(Character.isLetter(name.charAt(i)) || 
+                                Character.isSpaceChar(name.charAt(i))) ) {
+                                System.out.printf(ERROR_MSG, "Invalid Customer name");
+                                continue loop;
+                            }
+                        }
+                        break;
+
+                    }while(true);
+
+                    String[] tempCustNames = new String[custNames.length+1];
+
+                    for(int i = 0;i<custNames.length;i++){
+                        tempCustNames[i]=custNames[i];
+                    }
+                    tempCustNames[tempCustNames.length-1]=name;
+                    custNames=tempCustNames;
+
+                    //Initial Deposit
                     boolean valid;
+                    int initialDeposit;
+                    do{
+                        valid =true;
+                        System.out.print("Enter your Initial Deposit : ");
+                        initialDeposit = SCANNER.nextInt();
+                        SCANNER.nextLine();
+
+                        if(initialDeposit<5000){
+                            System.out.printf(ERROR_MSG,"Insufficient Ammount");
+                        }
+
+                    }while(!valid);
+                    
             
                 
-
                 default: System.exit(0);
 
             }
