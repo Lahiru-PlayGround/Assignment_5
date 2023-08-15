@@ -17,6 +17,19 @@ class Assignment5{
         final String CHECK_ACCOUNT_BALANCE = "Check Account Balance";
         final String DELETE_ACCOUNT = "Delete Account";
 
+        final String ERROR_MSG = String.format("\t%s%s%s\n", COLOR_RED_BOLD, "%s", RESET);
+        final String SUCCESS_MSG = String.format("\t%s%s%s\n", COLOR_GREEN_BOLD, "%s", RESET);
+
+        String screen = DASHBOARD;
+
+        do{
+            final String APP_TITLE = String.format("%s%s%s",COLOR_BLUE_BOLD, screen, RESET);
+
+            System.out.println(CLEAR);
+            System.out.println("\t" + APP_TITLE + "\n");
+
+        }while(true);
+
         
     }
 }
