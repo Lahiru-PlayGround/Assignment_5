@@ -122,7 +122,7 @@ class Assignment5{
                     }
                     tepmDeposit[tepmDeposit.length-1] = initialDeposit;
                     System.out.println();
-                    System.out.printf(SUCCESS_MSG, String.format("%s: %s has been saved successfully", accountIdName, name));
+                    System.out.printf(SUCCESS_MSG, String.format("Account Number %s: %s has been saved successfully", accountIdName, name));
                     System.out.print("Do you want to continue adding (Y/n)? ");
                     if (SCANNER.nextLine().strip().toUpperCase().equals("Y")) continue;
                     screen = DASHBOARD;
