@@ -22,6 +22,7 @@ class Assignment5{
 
         String[] accountId= new String[0];
         String[] custNames = new String[0];
+        int[] depositAmmunt = new int[0];
 
         String screen = DASHBOARD;
 
@@ -30,7 +31,7 @@ class Assignment5{
 
             System.out.println(CLEAR);
             System.out.println("\t" + APP_TITLE + "\n");
-
+            lable_1:
             switch(screen){
                 case DASHBOARD:
                     System.out.println("\t[1]. Create New Account");
@@ -61,19 +62,20 @@ class Assignment5{
                     // ID Validation
                     String[] tempId = new String[accountId.length+1];
 
-                    String accountIdName =String.format("New Account ID: SDB%05d \n", (accountId.length + 1));
+                    String accountIdName =String.format("SDB%05d \n", (accountId.length + 1));
                     for(int i = 0;i<accountId.length;i++){
                         tempId[i]=accountId[i];
                     }
                     tempId[tempId.length-1]=accountIdName;
                     accountId=tempId;
+                    System.out.println("New Account ID : "+accountIdName);
 
                     // Name Validation
 
                     String name;                 
                     loop:
                     do{
-                        System.out.println("Enter Customer Name");
+                        System.out.print("Enter Customer Name : ");
                         name = SCANNER.nextLine().strip();
 
                         if(name.isBlank()){
@@ -110,9 +112,22 @@ class Assignment5{
 
                         if(initialDeposit<5000){
                             System.out.printf(ERROR_MSG,"Insufficient Ammount");
+                            valid=false;
                         }
 
                     }while(!valid);
+
+                    int[] tepmDeposit = new int[depositAmmunt.length+1];
+                    for(int i =0;i<depositAmmunt.length;i++){
+                        tepmDeposit[i]=depositAmmunt[i];
+                    }
+                    tepmDeposit[tepmDeposit.length-1] = initialDeposit;
+
+                    System.out.printf(SUCCESS_MSG, String.format("%s: %s has been saved successfully", accountIdName, name));
+                    System.out.print("\tDo you want to continue adding (Y/n)? ");
+                    if (SCANNER.nextLine().strip().toUpperCase().equals("Y")) continue;
+                    screen = DASHBOARD;
+                    break;
                     
             
                 
