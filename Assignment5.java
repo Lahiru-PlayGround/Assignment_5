@@ -31,7 +31,6 @@ class Assignment5{
 
             System.out.println(CLEAR);
             System.out.println("\t" + APP_TITLE + "\n");
-            lable_1:
             switch(screen){
                 case DASHBOARD:
                     System.out.println("\t[1]. Create New Account");
@@ -62,7 +61,7 @@ class Assignment5{
                     // ID Validation
                     String[] tempId = new String[accountId.length+1];
 
-                    String accountIdName =String.format("SDB%05d \n", (accountId.length + 1));
+                    String accountIdName =String.format("SDB%05d ", (accountId.length + 1));
                     for(int i = 0;i<accountId.length;i++){
                         tempId[i]=accountId[i];
                     }
@@ -122,9 +121,9 @@ class Assignment5{
                         tepmDeposit[i]=depositAmmunt[i];
                     }
                     tepmDeposit[tepmDeposit.length-1] = initialDeposit;
-
+                    System.out.println();
                     System.out.printf(SUCCESS_MSG, String.format("%s: %s has been saved successfully", accountIdName, name));
-                    System.out.print("\tDo you want to continue adding (Y/n)? ");
+                    System.out.print("Do you want to continue adding (Y/n)? ");
                     if (SCANNER.nextLine().strip().toUpperCase().equals("Y")) continue;
                     screen = DASHBOARD;
                     break;
